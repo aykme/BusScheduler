@@ -30,9 +30,12 @@ class BusStopAdapter(private val onItemClicked: (Schedule) -> Unit) :
     class BusStopViewHolder(private var binding: BusStopItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        @SuppressLint("SimpleDateFormat")
+        companion object {
+            @SuppressLint("SimpleDateFormat")
+            private val dateFormat = SimpleDateFormat("h:mm a")
+        }
+
         fun bind(schedule: Schedule) {
-            val dateFormat = SimpleDateFormat("h:mm a")
             val date = Date(schedule.arrivalTime.toLong() * 1000)
             binding.stopNameTextView.text = schedule.stopName
             binding.arrivalTimeTextView.text = dateFormat.format(date)
