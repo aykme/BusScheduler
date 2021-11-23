@@ -27,7 +27,7 @@ class BusStopAdapter(private val onItemClicked: (Schedule) -> Unit) :
         }
     }
 
-    class BusStopViewHolder(private var binding: BusStopItemBinding) :
+    class BusStopViewHolder(private val binding: BusStopItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         companion object {
