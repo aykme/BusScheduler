@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.busschedule.database.schedule.Schedule
 import com.example.busschedule.database.schedule.ScheduleDao
 
-@Database(entities = [Schedule::class], version = 1)
+@Database(entities = [Schedule::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun scheduleDao(): ScheduleDao
@@ -23,6 +23,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "app_database"
                 )
+                    .fallbackToDestructiveMigration()
                     .createFromAsset("database/bus_schedule.db")
                     .build()
                 INSTANCE = instance
