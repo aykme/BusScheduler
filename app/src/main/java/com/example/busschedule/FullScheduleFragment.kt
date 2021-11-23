@@ -20,11 +20,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.busschedule.databinding.FullScheduleFragmentBinding
+import com.example.busschedule.viewmodels.BusScheduleViewModel
+import com.example.busschedule.viewmodels.BusScheduleViewModelFactory
 
-class FullScheduleFragment: Fragment() {
+class FullScheduleFragment : Fragment() {
+
+    private val viewModel: BusScheduleViewModel by activityViewModels {
+        BusScheduleViewModelFactory(
+            (activity?.application as BusScheduleApplication)
+                .database.scheduleDao()
+        )
+    }
 
     private var _binding: FullScheduleFragmentBinding? = null
 
