@@ -30,11 +30,9 @@ import com.example.busschedule.viewmodels.BusScheduleViewModelFactory
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class StopScheduleFragment : Fragment() {
+const val STOP_NAME = "stopName"
 
-    companion object {
-        var STOP_NAME = "stopName"
-    }
+class StopScheduleFragment : Fragment() {
 
     private val viewModel: BusScheduleViewModel by activityViewModels {
         BusScheduleViewModelFactory(
